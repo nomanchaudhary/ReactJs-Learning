@@ -1,9 +1,13 @@
 import React from 'react'
-import Counter from './Counter/Counter'
+// import Counter from './Counter/Counter'
+import Bgchange from './Backgroungchnager/Bgchange'
 
 const App = () => {
  return(
-  <Counter/>
+    <>
+  {/* <Counter/> */}
+  <Bgchange/>
+  </>
  )
 }
 
