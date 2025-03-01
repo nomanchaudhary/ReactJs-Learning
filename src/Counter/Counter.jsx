@@ -13,7 +13,7 @@ let [counter , setCounter] = useState(0)
     setCounter(0)
  };
   return (
-    <div>
+    <div className='bg-black'>
       <h1>Counter value :{counter}</h1><br />
       <button onClick={increment}>Increment</button><br />
       <button onClick={decrement}>Decrement</button><br />
