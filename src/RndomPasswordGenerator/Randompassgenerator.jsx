@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, useRef } from "react";
 
 function Randompassgenerator() {
   const [length, setLength] = useState(8);
@@ -16,6 +16,13 @@ function Randompassgenerator() {
     }
     setPassword(pass);
   }, [length, numberallowed, charallowed, setPassword]);
+  const passowrdRef = useRef(null);
+  const passwordCopy = useCallback(()=>{
+    passowrdRef.current?.select();
+    passowrdRef.current?.setSelectionRange(0,20);
+    window.navigator.clipboard.writeText(password);
+  },[password])
+
   useEffect(() => {
     passwordGenerator();
   }, [length, numberallowed, charallowed, passwordGenerator]);
@@ -28,16 +35,17 @@ function Randompassgenerator() {
         <input
           type="text"
           value={password}
+          ref={passowrdRef}
           placeholder="passowrd"
           readOnly
           className="text-gray-600 bg-gray-50 px-1 py-2 rounded-2xl w-sm mt-4 mb-4"
         />
-        <button className="ouline-none bg-blue-600 text-white p-2 rounded-full  ">
+        <button onClick={passwordCopy} className="ouline-none bg-blue-600 text-white p-2 rounded-full  ">
           Copy
         </button>
       </div>
-      <div className="text-sm flex gap-x-2">
-        <div className="flex text-center gap-x-1">
+      <div className="text-sm flex justify-center gap-x-2">
+        <div className="flex text-center m-10 gap-x-1">
           <input
             type="range"
             min={8}
