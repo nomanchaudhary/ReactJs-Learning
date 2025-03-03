@@ -21,6 +21,7 @@ function Randompassgenerator() {
     passowrdRef.current?.select();
     passowrdRef.current?.setSelectionRange(0,20);
     window.navigator.clipboard.writeText(password);
+    alert("Password Copied")
   },[password])
 
   useEffect(() => {
